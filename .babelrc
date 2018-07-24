@@ -1,0 +1,11 @@
+{
+  // 用babel将es６代码转成es5代码
+  // 从右向左解析
+  "presets": [
+    "env",
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-vue-jsx" // 使用babel解析jsx代码
+  ]
+}
