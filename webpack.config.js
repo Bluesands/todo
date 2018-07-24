@@ -5,16 +5,22 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === 'development'; // 判断是否是开发环境
+// 定义css提取loader
 const cssExtract = {
   loader: MiniCssExtractPlugin.loader,
   options: {
+    // 如果在css文件里引入图片，就需要指定一下相对路径
     publicPath: '../../'
   }
 };
+
+// 开发环境使用vue-style-loader直接将css写入style标签，生成环境css单独打包
 const cssIsExtract = isDev ? 'vue-style-loader' : cssExtract;
 
 const config = {
+  // https://webpack.docschina.org/configuration/target
+  // 项目是web项目，webpack将代码编译为浏览器环境可用，target默认是'web'
   target: 'web',
   entry: {
     app: path.join(__dirname, 'src/index.js')
