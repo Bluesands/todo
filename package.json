@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --mode=production",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js --mode=development"
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js --mode=production",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js --mode=development"
   },
   "author": "",
   "license": "ISC",
@@ -30,12 +30,14 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "url-loader": "^1.0.1",
-    "vue": "^2.5.16",
     "vue-loader": "^15.2.6",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vue": "^2.5.16"
+  }
 }
