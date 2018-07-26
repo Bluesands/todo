@@ -1,4 +1,4 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const cssExtract = {
   loader: MiniCssExtractPlugin.loader,
@@ -6,10 +6,10 @@ const cssExtract = {
     // 如果在css文件里引入图片，就需要指定一下相对路径
     publicPath: '../../'
   }
-};
+}
 
 module.exports = (isDev) => {
-  const cssIsExtract = isDev ? 'vue-style-loader' : cssExtract;
+  const cssIsExtract = isDev ? 'vue-style-loader' : cssExtract
   return {
     test: /\.(stylus|css)$/,
     use: [
@@ -31,4 +31,4 @@ module.exports = (isDev) => {
       'stylus-loader'
     ]
   }
-};
+}

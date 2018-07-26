@@ -8,17 +8,17 @@
 </template>
 
 <script>
-  import Header from "./views/layout/header.vue";
-  import Footer from "./views/layout/footer.jsx";
-  import Todo from "./views/todo/todo.vue";
+  import Header from './views/layout/header.vue'
+import Footer from './views/layout/footer.jsx'
+import Todo from './views/todo/todo.vue'
 
-  export default {
+export default {
     components: {
       Header,
       Footer,
       Todo
     }
-  };
+  }
 </script>
 
 <style lang="stylus" module>

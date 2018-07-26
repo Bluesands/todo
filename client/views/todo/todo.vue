@@ -7,51 +7,51 @@
 </template>
 
 <script>
-  import Item from './item.vue';
-  import Tabs from './tabs.vue';
+  import Item from './item.vue'
+import Tabs from './tabs.vue'
 
-  let id = 0;
+let id = 0
 
-  export default {
-    data() {
+export default {
+    data () {
       return {
         todos: [],
         filter: 'all'
       }
     },
     computed: {
-      filteredTodos() {
+      filteredTodos () {
         if (this.filter === 'all') {
-          return this.todos;
+          return this.todos
         }
-        const completed = this.filter === 'completed';
-        return this.todos.filter(todo => todo.completed === completed);
+        const completed = this.filter === 'completed'
+        return this.todos.filter(todo => todo.completed === completed)
       }
     },
     methods: {
-      addTodo(e) {
+      addTodo (e) {
         this.todos.unshift({
           id: id++,
           content: e.target.value.trim(),
           completed: false
         })
-        e.target.value = '';
+        e.target.value = ''
       },
-      deleteTodo(id) {
-        this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1);
+      deleteTodo (id) {
+        this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
       },
-      toggleFilter(state) {
-        this.filter = state;
+      toggleFilter (state) {
+        this.filter = state
       },
-      clearAllCompleted() {
-        this.todos = this.todos.filter(todo => !todo.completed);
+      clearAllCompleted () {
+        this.todos = this.todos.filter(todo => !todo.completed)
       }
     },
     components: {
       Item,
       Tabs
     }
-  };
+  }
 </script>
 
 <style lang="stylus" module>
