@@ -1,8 +1,11 @@
 const path = require('path');
+const createVueLoaderOptions = require('./vue-loader.config.js');
+
+const isDev = process.env.NODE_ENV === 'development';
 
 const config = {
   target: 'web',
-  entry: path.join(__dirname, '../src/index.js'),
+  entry: path.join(__dirname, '../client/index.js'),
   output: {
     filename: 'assets/js/[name].[hash:8].js',
     path: path.join(__dirname, '../dist')
@@ -10,7 +13,8 @@ const config = {
   module: {
     rules: [{
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: createVueLoaderOptions(isDev)
       },
       {
         test: /\.js$/,
@@ -27,8 +31,8 @@ const config = {
           loader: 'url-loader',
           options: {
             limit: 50000,
-            name: '[name].[hash:8].[ext]',
-            outputPath: 'assets/images'
+            name: 'images/[name].[hash:8].[ext]',
+            outputPath: 'statics'
           }
         }]
       }

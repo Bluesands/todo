@@ -8,13 +8,20 @@ const cssExtract = {
   }
 };
 
-module.exports = function (isDev) {
+module.exports = (isDev) => {
   const cssIsExtract = isDev ? 'vue-style-loader' : cssExtract;
   return {
     test: /\.(stylus|css)$/,
     use: [
       cssIsExtract,
-      'css-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          modules: true,
+          camelCase: true,
+          localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:5]'
+        }
+      },
       {
         loader: 'postcss-loader',
         options: {

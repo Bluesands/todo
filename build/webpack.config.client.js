@@ -18,9 +18,9 @@ const defaultPlugin = [
   }),
   new VueLoaderPlugin(),
   new HtmlWebpackPlugin({
-    title: 'Vue And Webpack',
+    title: 'Todo App',
     filename: 'index.html',
-    template: 'src/index.html'
+    template: 'client/index.html'
   }),
 ]
 const cssProcess = cssExtract(isDev);
@@ -50,11 +50,12 @@ if (isDev) {
 } else {
   config = merge(baseConfig, {
     entry: {
-      app: path.join(__dirname, '../src/index.js'),
+      app: path.join(__dirname, '../client/index.js'),
       vendor: ['vue']
     },
     output: {
-      filename: 'assets/js/[name].[chunkhash:8].js'
+      path: path.resolve(__dirname, '../dist/client'),
+      filename: 'statics/js/[name].[chunkhash:8].js'
     },
     plugins: defaultPlugin.concat([
       new CleanWebpackPlugin(
@@ -64,7 +65,7 @@ if (isDev) {
         }
       ),
       new MiniCssExtractPlugin({
-        filename: "assets/css/[name].[chunkhash:8].css"
+        filename: "statics/css/[name].[chunkhash:8].css"
       }),
     ]),
     module: {
