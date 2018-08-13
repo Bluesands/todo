@@ -5,10 +5,10 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const config = {
   target: 'web',
-  entry: path.join(__dirname, '../client/index.js'),
+  entry: path.resolve(__dirname, '../client/index.js'),
   output: {
-    filename: 'assets/js/[name].[hash:8].js',
-    path: path.join(__dirname, '../dist')
+    path: path.resolve(__dirname, '../dist'),
+    filename: 'static/js/[name].[hash:8].js'
   },
   module: {
     rules: [{

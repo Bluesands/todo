@@ -1,18 +1,33 @@
 <template>
   <section :class="$style.realApp">
-    <input type="text" :class="$style.addInput" autofocus="autofocus" placeholder="接下来要去做什么？" @keyup.enter="addTodo">
-    <Item v-for="(todo, index) in filteredTodos" :todo="todo" :key="index" @del="deleteTodo"></Item>
-    <Tabs :filter="filter" :todos="todos" @toggle="toggleFilter" @clearAllCompleted="clearAllCompleted"></Tabs>
+    <input
+      type="text"
+      :class="$style.addInput"
+      autofocus="autofocus"
+      placeholder="接下来要去做什么？"
+      @keyup.enter="addTodo"
+    >
+    <item
+      v-for="(todo, index) in filteredTodos"
+      :todo="todo"
+      :key="index"
+      @del="deleteTodo"
+    />
+    <Tabs
+      :filter="filter"
+      :todos="todos"
+      @toggle="toggleFilter"
+      @clearAllCompleted="clearAllCompleted"
+    />
   </section>
 </template>
 
 <script>
   import Item from './item.vue'
-import Tabs from './tabs.vue'
+  import Tabs from './tabs.vue'
 
-let id = 0
-
-export default {
+  let id = 0
+  export default {
     data () {
       return {
         todos: [],
@@ -80,4 +95,5 @@ export default {
     border-radius: 4px;
     box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
   }
+
 </style>

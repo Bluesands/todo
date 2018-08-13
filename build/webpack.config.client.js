@@ -20,23 +20,32 @@ const defaultPlugin = [
   new HtmlWebpackPlugin({
     title: 'Todo App',
     filename: 'index.html',
-    template: 'client/index.html'
+    template: 'client/index.html',
+    inject: true,
+    favicon: path.resolve(__dirname, '../favicon.ico')
   })
 ]
 const cssProcess = cssExtract(isDev)
 const devServer = {
-  contentBase: path.join(__dirname, 'dist'),
+  contentBase: path.resolve(__dirname, 'dist'),
   port: '8000',
   host: '0.0.0.0',
   compress: true,
   overlay: {
     errors: true
   },
-  hot: true
+  hot: true,
+  historyApiFallback: {
+    index: '/index.html',
+    disableDotRule: true
+  }
 }
 
 if (isDev) {
   config = merge(baseConfig, {
+    output: {
+      publicPath: '/'
+    },
     module: {
       rules: [cssProcess]
     },
